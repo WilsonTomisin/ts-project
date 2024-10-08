@@ -1,7 +1,22 @@
 import { Button } from "./components/ui/button";
 import { useState } from "react";
+import { useAppSelector } from "./hooks";
+import {
+  HomeLayout,
+  Landing,
+  Error,
+  Products,
+  SingleProduct,
+  Cart,
+  About,
+  Register,
+  Login,
+  Checkout,
+  Orders,
+} from './pages';
 
 function App() {
+  const { name} = useAppSelector((state)=> state.userState )
   const[ isDisabled, setIsDisabled] = useState(true)
   return (
     <div>
@@ -10,8 +25,9 @@ function App() {
         click me!
       </Button>
       <button  disabled={isDisabled} onClick={()=>alert('clicked second button!')} >
-        test btn
+        {name}
       </button>
+      <Orders/>
     </div>
   )
 }
