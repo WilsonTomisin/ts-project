@@ -1,33 +1,38 @@
-import { Button } from "./components/ui/button";
-import { useState } from "react";
-import { useAppSelector } from "./hooks";
-import {
-  HomeLayout,
-  Landing,
-  Error,
-  Products,
-  SingleProduct,
-  Cart,
-  About,
-  Register,
-  Login,
-  Checkout,
-  Orders,
-} from './pages';
+import {HomeLayout,Landing,Error,Products,SingleProduct,Cart,About,Register,Login, Checkout, Orders,} from './pages';
+import { createBrowserRouter, RouterProvider} from 'react-router-dom'
+
+
+const router = createBrowserRouter([
+  {
+    path:'/',
+    element: <HomeLayout/>,
+    children:[
+      {index:true, element:<Landing/>},
+      { path:"products", element:<Products/> },
+      { path:"product/:id", element:<SingleProduct/>},
+      { path:"cart",element:<Cart/>},
+      { path:"about", element:<About/>},
+      { path:"checkout", element:<Checkout/>},
+      {path:"orders", element:<Orders/>}
+    ]
+  },
+  {
+    path:"/login",
+    element:<Login/>
+  },
+  {
+    path:'/register',
+    element:<Register/>
+  }
+])
 
 function App() {
-  const { name} = useAppSelector((state)=> state.userState )
-  const[ isDisabled, setIsDisabled] = useState(true)
+  
   return (
     <div>
-      <h1 className=' text-2xl font-bold'>Hello world</h1>
-      <Button variant={'link'} size={'lg'} onClick={()=>alert('clicked button!')} >
-        click me!
-      </Button>
-      <button  disabled={isDisabled} onClick={()=>alert('clicked second button!')} >
-        {name}
-      </button>
-      <Orders/>
+      {/* <h1 className=' text-2xl font-bold'>Hello world</h1> */}
+
+      <RouterProvider router={router}/>
     </div>
   )
 }
