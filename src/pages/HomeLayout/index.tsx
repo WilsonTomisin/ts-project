@@ -10,7 +10,7 @@ const HomeLayout = () => {
       <div className=" align-element">
         <Outlet/>
       </div>
-      <footer>footer</footer>
+      {/* <footer>footer</footer> */}
     </div>
   )
 }

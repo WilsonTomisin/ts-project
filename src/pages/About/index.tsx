@@ -1,4 +1,5 @@
 const About = () => {
+
   return (
     <div className=" pt-10">
         <h1 className=" text-4xl sm:text-6xl font-bold flex flex-wrap gap-2 sm:gap-x-6 leading-none tracking-wide justify-center items-center">
