@@ -6,4 +6,3 @@ export function formatAsDollars(price: number|string): string {
     return AmountDollars
     
 }
-// formatAsDollars('123456789.99')

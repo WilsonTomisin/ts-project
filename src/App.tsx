@@ -1,7 +1,10 @@
-import { Button } from './components/ui/button';
 import {HomeLayout,Landing,Error,ErrorElement,Products,SingleProduct,Cart,About,Register,Login, Checkout, Orders,} from './pages';
 import { createBrowserRouter, RouterProvider} from 'react-router-dom';
+
+
+// Loaders
 import { loader as LandingLoader } from './pages/Landing';
+import { loader as ProductsLoader} from './pages/Products';
 
 
 const router = createBrowserRouter([
@@ -11,7 +14,7 @@ const router = createBrowserRouter([
     errorElement:<Error/>,
     children:[
       {index:true, element:<Landing/>, loader: LandingLoader},
-      { path:"products", element:<Products/>,errorElement:<ErrorElement/> },
+      { path:"products", element:<Products/>,errorElement:<ErrorElement/>, loader: ProductsLoader },
       { path:"products/:id", element:<SingleProduct/>,errorElement:<ErrorElement/> },
       { path:"cart",element:<Cart/> ,errorElement:<ErrorElement/> },
       { path:"about", element:<About/> ,errorElement:<ErrorElement/> },

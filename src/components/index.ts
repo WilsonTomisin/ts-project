@@ -10,6 +10,14 @@ export { default as Productsgrid} from './Productsgrid';
 export { default as Hero} from './Hero';
 export { default as FeaturedProducts} from './FeaturedProducts';
 export { default as Sectiontitle} from './Sectiontitle';
+export { default as ProductsList} from './ProductsList';
+export { default as PaginationContainer} from './PaginationContainer';
+export { default as ProductsContainer} from './ProductsContainer';
+export { default as Filters} from './Filters';
+
+
+
+
 
 
 

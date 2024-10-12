@@ -11,7 +11,7 @@ const Productsgrid = () => {
         const priceInDollars = formatAsDollars(price);
 
         return(
-          <Link to={`products/${product.id}`} key={product.id}>
+          <Link to={`/products/${product.id}`} key={product.id}>
             <Card>
               <CardContent className=" p-4">
                 <img src={image} alt={title} className=" rounded-md h-64 md:h-48 w-full object-cover"/>
