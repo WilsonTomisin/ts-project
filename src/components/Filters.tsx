@@ -1,13 +1,10 @@
-import { Label } from "./ui/label"
-import { Input } from "./ui/input"
-import { Checkbox } from "./ui/checkbox"
-import { Select } from "./ui/select";
-import { Slider } from "./ui/slider";
 import { Form , Link , useLoaderData} from "react-router-dom";
 import { Button } from "./ui/button";
 import { ProductsResponseWithParams } from "@/utils";
 import FormInput from "./FormInput";
 import FormSelect from "./FormSelect";
+import FormRange from "./FormRange";
+import FormCheckbox from "./FormCheckbox";
 
 const Filters = () => {
   /*  the 'Form' element from react-router-dom sends a
@@ -18,7 +15,7 @@ const Filters = () => {
   until specified in the method attribute whether GET,POST ,PUT OR DELETE !! */
 
   const {meta, params} = useLoaderData() as ProductsResponseWithParams
-  const { search, category, order,page,price, company} = params
+  const { search, category, order,page,price, company, shipping} = params
   return (
   
     <Form
@@ -36,6 +33,13 @@ const Filters = () => {
 
       {/* ORDER BY */}
       <FormSelect labelText='order by' name='order' options={['a-z', 'z-a', 'high', 'low']} defaultValue={order} />
+
+      {/* RANGE */}
+      <FormRange labelText="Price" defaultValue={price as string} name="price" />
+
+      {/* SHIPPING */}
+      <FormCheckbox label='free shipping' name='shipping' defaultValue={shipping} />
+
 
       <Button type="submit"  size={'sm'} className=" self-end mb-2" >
         Submit
