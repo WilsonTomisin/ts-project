@@ -1,10 +1,8 @@
 
-
-
 const PaginationContainer = () => {
   return (
     <div>
-      pagimation-con
+      pagination-con
     </div>
   )
 }
