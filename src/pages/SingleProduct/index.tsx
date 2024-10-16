@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { SelectProductColor, SelectProductAmount } from '@/components';
+import { Mode } from '@/components/SelectProductAmount';
+import { useToast } from '@/hooks/use-toast';
 
 
 
@@ -23,6 +25,8 @@ const SingleProduct = () => {
   const priceInDollars = formatAsDollars(price)
   const [ productColor, setProductColor] = useState(colors[0])
   const [ productAmount, setProductAmount] = useState(1)
+
+  const { toast } = useToast()
   return (
     <section>
       <div className='flex gap-x-2 h-6 items-center'>
@@ -51,11 +55,14 @@ const SingleProduct = () => {
           </p>
           <p className='mt-6 leading-8'>{description}</p>
           {/* COLORS */}
-              <SelectProductColor colors={colors} productColor={productColor} setProductColor={setProductColor}  />
+              <SelectProductColor colors={colors} productColor={productColor} setProductColor={setProductColor}/>
           {/* AMOUNT */}
-              <SelectProductAmount/>
+              <SelectProductAmount mode={Mode.SingleProduct} amount={productAmount} setAmount={setProductAmount}/>
           {/* CART BUTTON */}
-          <Button size='lg' className='mt-10' onClick={()=> console.log('yoo')}>
+          <Button size='lg' className='mt-10' onClick={()=> toast({
+            variant:'default',
+            title:'Added to cart!'
+          })}>
             Add to bag
           </Button>
         </div>
