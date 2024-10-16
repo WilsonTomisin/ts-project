@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider} from 'react-router-dom';
 // Loaders
 import { loader as LandingLoader } from './pages/Landing';
 import { loader as ProductsLoader} from './pages/Products';
+import { loader as SingleProductLoader } from './pages/SingleProduct';
 
 
 const router = createBrowserRouter([
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
     children:[
       {index:true, element:<Landing/>, loader: LandingLoader},
       { path:"products", element:<Products/>,errorElement:<ErrorElement/>, loader: ProductsLoader },
-      { path:"products/:id", element:<SingleProduct/>,errorElement:<ErrorElement/> },
+      { path:"products/:id", element:<SingleProduct/>,errorElement:<ErrorElement/>, loader: SingleProductLoader },
       { path:"cart",element:<Cart/> ,errorElement:<ErrorElement/> },
       { path:"about", element:<About/> ,errorElement:<ErrorElement/> },
       { path:"checkout", element:<Checkout/> ,errorElement:<ErrorElement/> },

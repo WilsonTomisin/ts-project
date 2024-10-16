@@ -8,10 +8,10 @@ type ConstructUrlParams = {
     pageNumber,
     search,
     pathname,
-  }: ConstructUrlParams) => {
-    let SearchParams =  new URLSearchParams(search);
-    SearchParams.set('page', pageNumber.toString())
-    return `${pathname}?${SearchParams.toString()}`;
+  }: ConstructUrlParams): string => {
+    let SearchParams = new URLSearchParams(search)
+    SearchParams.set('page',pageNumber.toString())
+    return ` ${pathname}?${SearchParams.toString()}`
   };
   
   type ConstructPrevOrNextParams = {
@@ -27,6 +27,7 @@ type ConstructUrlParams = {
     search,
     pathname,
   }: ConstructPrevOrNextParams): { prevUrl: string; nextUrl: string } => {
+    
     let prevPage = currentPage - 1;
     if (prevPage < 1) {
         prevPage = pageCount ;
@@ -37,7 +38,8 @@ type ConstructUrlParams = {
     if (nextPage > pageCount) {
       nextPage = 1 ;
     }
+    const nextUrl = constructUrl({pageNumber:nextPage, search, pathname});
 
-    const nextUrl = constructUrl({pageNumber:nextPage, search, pathname})
+
     return { prevUrl, nextUrl };
   };

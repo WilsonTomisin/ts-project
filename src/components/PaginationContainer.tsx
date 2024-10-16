@@ -22,7 +22,7 @@ const PaginationContainer = () => {
   
  // creates an array of page numbers using the pageCount attribute from the REST API as the length of the array
  // in this case the pageCount == 3.
-  const pages = Array.from( { length: pageCount}, (_,idx)=> idx + 1) 
+  const pages = Array.from( { length: pageCount}, (_,idx)=> idx + 1)  // returns [1,2,3]
   
   // if the pageCount is less than 2 , the pagination component does not render
   //e.g in cases where the results from a search query is 0 the pageCount attribute would be set to 0. we would'nt want to render the pagination then 
