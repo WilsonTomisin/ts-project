@@ -26,7 +26,7 @@ type CartItemAmountProps = {
 const SelectProductAmount = ({ mode, amount , setAmount}: SingleProductAmountProps | CartItemAmountProps) => {
     const cartItem = mode == Mode.CartItem ;
   return (
-    // PS : SHADC-UN Select component valuess must be of a type 'string' hence the need to convert the numbers.
+    // PS : SHADC-UN Select component values must be of a type 'string' to be displayed hence the need to convert the numbers to strings.
     <>
       <h2>Amount:</h2>
       <Select defaultValue={amount.toString()} onValueChange={(value)=> setAmount(Number(value))}>
@@ -34,6 +34,7 @@ const SelectProductAmount = ({ mode, amount , setAmount}: SingleProductAmountPro
             <SelectValue placeholder={amount}/>
         </SelectTrigger>
         <SelectContent>
+            
             {Array.from({ length: cartItem ? amount + 7: 10},( _, idx)=>{
                 const numberInString = (idx + 1).toString()
                 return(
@@ -41,7 +42,7 @@ const SelectProductAmount = ({ mode, amount , setAmount}: SingleProductAmountPro
                         {numberInString}
                     </SelectItem>
                 )
-            })}
+            })} 
         </SelectContent>
       </Select>
     </>

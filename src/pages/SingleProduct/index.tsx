@@ -12,7 +12,6 @@ import { useToast } from '@/hooks/use-toast';
 
 export const loader:LoaderFunction = async({params}):Promise<SingleProductResponse>=>{
   const { data} = await CustomFetch<SingleProductResponse>(`/products/${params.id}`)
-  console.log(params)
   return data
 
 }
@@ -59,11 +58,8 @@ const SingleProduct = () => {
           {/* AMOUNT */}
               <SelectProductAmount mode={Mode.SingleProduct} amount={productAmount} setAmount={setProductAmount}/>
           {/* CART BUTTON */}
-          <Button size='lg' className='mt-10' onClick={()=> toast({
-            variant:'default',
-            title:'Added to cart!'
-          })}>
-            Add to bag
+          <Button size='lg' className='mt-10' onClick={()=>null}>
+            Add to cart
           </Button>
         </div>
       </div>

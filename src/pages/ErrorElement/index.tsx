@@ -1,7 +1,7 @@
 import { Link, useRouteError, isRouteErrorResponse } from "react-router-dom"
 
 const ErrorElement = () => {
-    const error = useRouteError();
+    // const error = useRouteError();
   return ( 
     <div className=" text-center">
         <p className=" text-primary text-9xl font-semibold"></p>
