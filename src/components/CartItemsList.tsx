@@ -17,10 +17,10 @@ const CartItemsList = () => {
 
         return(
             <Card key={cartID} className=' flex flex-col gsp-y-4 sm:flex-row flex-wrap p-6 mb-8 '>
-                <FirstColumn image={image}/>
+                <FirstColumn title={title} image={image}/>
                 <SecondColumn title={title} company={company} color={productColor} />
-                <ThirdColumn amount={amount} cartID={cartID}/>
-                <FourthColumn/>
+                <ThirdColumn Amount={amount} cartID={cartID}/>
+                <FourthColumn price={price}/>
             </Card>
         )
       })}

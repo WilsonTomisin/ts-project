@@ -37,7 +37,4 @@ const CartItemsTotal = ()=> {
     </Card>
   )
 }
-
-
-
 export default CartItemsTotal

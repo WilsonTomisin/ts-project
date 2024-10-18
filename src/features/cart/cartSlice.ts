@@ -61,8 +61,8 @@ const cartSlice = createSlice({
 
             toast({
                 variant:'destructive',
-                title:'Item removed from cart!',
-                description:` ${cartItemToDelete.amount} ${ cartItemToDelete.amount > 1 ? 'Products': 'Product'} have been removed from your cart...`
+                title:'Product removed from cart!',
+                description:` ${cartItemToDelete.amount} ${ cartItemToDelete.amount > 1 ? 'items': 'item'} of ${cartItemToDelete.title} has been removed from your cart...`
             })
         },
         updateCart:(state, action:PayloadAction<{cartID:string ; Amount:number}>)=>{
@@ -83,7 +83,8 @@ const cartSlice = createSlice({
 
             cartSlice.caseReducers.calculateTotal(state)
             toast({
-                description:'Amount has been updated!'
+                title:'Amount has been updated!',
+                description: ` you now have a total of ${Amount} ${ Amount > 1 ? 'items': 'item'} of ${cartItem.title} in your cart!.`
             })
         },
         clearCart:()=>{

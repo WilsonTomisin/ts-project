@@ -20,11 +20,11 @@ type SingleProductAmountProps = {
 type CartItemAmountProps = {
     mode: Mode.CartItem;
     amount : number ;
-    setAmount : (value: number)=> void
+    setAmount : (value: number)=> void ; // this  is a dispatch function that was used in the cartItemsColumn file 'third'
 }
 
 const SelectProductAmount = ({ mode, amount , setAmount}: SingleProductAmountProps | CartItemAmountProps) => {
-    const cartItem = mode == Mode.CartItem ;
+    const cartItem = mode == Mode.CartItem ; // returns a boolean..
   return (
     // PS : SHADCN-UI Select component values must be of a type 'string' to be displayed hence the need to convert the numbers to strings.
     <>
