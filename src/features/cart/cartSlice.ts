@@ -34,8 +34,7 @@ const cartSlice = createSlice({
             // state.numItemsInCart = state.cartItems.length
             state.numItemsInCart = state.numItemsInCart + newCartItem.amount;
             state.cartTotal = state.cartTotal + Number(newCartItem.price) * newCartItem.amount;
-            // state.tax = 0.05 * state.cartTotal;
-            // state.orderTotal = state.cartTotal + state.shipping + state.tax;
+         
             cartSlice.caseReducers.calculateTotal(state)
 
             toast({
@@ -43,7 +42,6 @@ const cartSlice = createSlice({
                 title:'Item added to cart!',
                 description:` ${newCartItem.amount} ${ newCartItem.amount > 1 ? 'Products': 'Product'} has been added to your cart...`
             })
-            // localStorage.setItem('cart', JSON.stringify(state))
         },
         deleteFromCart: (state, action:PayloadAction<string>)=>{
             const cartIdToDelete = action.payload;

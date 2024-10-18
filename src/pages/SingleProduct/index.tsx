@@ -1,31 +1,50 @@
 import { useLoaderData } from 'react-router-dom';
 import { Link, type LoaderFunction } from 'react-router-dom';
-import { CustomFetch,formatAsDollars,type SingleProductResponse,} from '@/utils';
+import { CartItem, CustomFetch,formatAsDollars,type SingleProductResponse,} from '@/utils';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { SelectProductColor, SelectProductAmount } from '@/components';
 import { Mode } from '@/components/SelectProductAmount';
-import { useToast } from '@/hooks/use-toast';
-
+import { useAppDispatch } from '@/hooks';
+import { addToCart } from '@/features/cart/cartSlice';
 
 
 export const loader:LoaderFunction = async({params}):Promise<SingleProductResponse>=>{
   const { data} = await CustomFetch<SingleProductResponse>(`/products/${params.id}`)
-  return data
-
+  return data ; 
 }
 
 
 const SingleProduct = () => {
   const { data:Products } = useLoaderData() as SingleProductResponse ;
   const { price,description,colors, company,title,image } = Products.attributes
+  const { id} = Products
 
   const priceInDollars = formatAsDollars(price)
   const [ productColor, setProductColor] = useState(colors[0])
   const [ productAmount, setProductAmount] = useState(1)
 
-  const { toast } = useToast()
+  const dispatch = useAppDispatch();
+
+  const cartItem:CartItem = {
+      /* 
+      cartID has a type of string and . The reason we appended
+      the productcolor to the id for our cartId is because, products have different colors,and they could have
+      the same ID for the same product even though the colors are different to fix this, we ensured that
+      the productcolor is also a part of the ID there fore products with different colors are unique    
+      */
+    cartID: id+productColor, 
+    productID: id,
+    image,
+    title,
+    price,
+    amount: productAmount,
+    productColor: productColor,
+    company
+  }
+
+  // const { toast } = useToast()
   return (
     <section>
       <div className='flex gap-x-2 h-6 items-center'>
@@ -58,7 +77,7 @@ const SingleProduct = () => {
           {/* AMOUNT */}
               <SelectProductAmount mode={Mode.SingleProduct} amount={productAmount} setAmount={setProductAmount}/>
           {/* CART BUTTON */}
-          <Button size='lg' className='mt-10' onClick={()=>null}>
+          <Button size='lg' className='mt-10' onClick={()=>dispatch(addToCart(cartItem))}>
             Add to cart
           </Button>
         </div>

@@ -21,6 +21,9 @@ export { default as FormRange } from './FormRange';
 export { default as FormCheckbox } from './FormCheckbox';
 export { default as SelectProductColor } from './SelectProductColor';
 export { default as SelectProductAmount } from './SelectProductAmount';
+export { default as CartItemsList } from './CartItemsList';
+export { default as CartItemsTotal } from './CartItemsTotal';
+
 
 
 

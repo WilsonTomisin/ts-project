@@ -40,6 +40,7 @@ export type SingleProductResponse = {
     }
     meta:{}
 }
+// export type SingleProductResponseUpdated= SingleProductResponse &{ productColor: string; productAmount:number;}
 
 export type ProductsMeta = {
   categories: string[];
