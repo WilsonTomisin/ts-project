@@ -23,6 +23,7 @@ export { default as SelectProductColor } from './SelectProductColor';
 export { default as SelectProductAmount } from './SelectProductAmount';
 export { default as CartItemsList } from './CartItemsList';
 export { default as CartItemsTotal } from './CartItemsTotal';
+export { default as SubmitBtn } from './SubmitBtn';
 
 
 

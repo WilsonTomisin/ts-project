@@ -17,9 +17,9 @@ export const loader:LoaderFunction = async({params}):Promise<SingleProductRespon
 
 
 const SingleProduct = () => {
-  const { data:Products } = useLoaderData() as SingleProductResponse ;
-  const { price,description,colors, company,title,image } = Products.attributes
-  const { id} = Products
+  const { data:Product } = useLoaderData() as SingleProductResponse ;
+  const { price,description,colors, company,title,image } = Product.attributes
+  const { id} = Product
 
   const priceInDollars = formatAsDollars(price)
   const [ productColor, setProductColor] = useState(colors[0])

@@ -12,7 +12,7 @@ const CartItemsList = () => {
     const { cartItems } = useAppSelector((state)=>state.cartState)
   return (
     <div>
-      {cartItems.map((cartItem,idx)=>{
+      {cartItems.map((cartItem)=>{
         const { cartID ,productColor,amount, price, title,image,company} = cartItem
 
         return(
