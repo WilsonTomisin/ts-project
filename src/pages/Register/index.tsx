@@ -44,7 +44,7 @@ const Register = () => {
             <FormInput type='password' name='password' defaultValue='secret' />
             <SubmitBtn text='register' className='w-full mt-4' />
   
-            <p className='text-center mt-4'>
+            <p className=' flex items-center justify-center mt-4'>
               Already a member?
               <Button type='button' asChild variant='link'>
                 <Link to='/login'>Login</Link>
