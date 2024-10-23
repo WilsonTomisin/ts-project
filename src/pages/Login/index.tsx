@@ -17,6 +17,25 @@ import { AxiosResponse } from 'axios';
 
 
 
+export const action = (store:ReduxStore):ActionFunction => {
+
+  /* we are returning a function within a higher order function soo that we would have access to the redux store . */
+  return async({request}):Promise<Response|null>=>{
+    const formData = await request.formData();
+    const parsedFormData = Object.fromEntries(formData)
+    try {
+      const response = await CustomFetch.post('/auth/local', parsedFormData);
+      const username = response.data.user.username;
+      const jwt = response.data.jwt ;
+
+      store.dispatch(loginUser({username,jwt}));
+      return redirect('/')
+    } catch (error) {
+      return null
+    }
+  }
+}
+
 
 const Login = () => {
   const dispatch = useAppDispatch()

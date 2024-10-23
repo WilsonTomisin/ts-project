@@ -29,14 +29,16 @@ const userSLice = createSlice({
             state.user = user;
             localStorage.setItem('user', JSON.stringify(user));
 
-            if (user.username == 'demo user') {
+            if (user.username === 'demo user') {
                 toast({
                     description:'welcome demo user' 
                 })
+                return ;
             }
             toast({
                 description:'Login successful!'
             })
+            
         },
         logoutUser:(state)=>{
             state.user = null;

@@ -1,10 +1,12 @@
 import { useState } from "react"
 import { Button } from "./ui/button"
 import { Link } from "react-router-dom"
+import { useAppSelector } from "@/hooks"
 
 const Header = () => {
-    const [user, setUser] = useState<{name:string} |null>({
-        name:'John smith'
+    
+    const [user, setUser] = useState<{name:string } | null>({
+        name: useAppSelector((state)=> state.userState.user?.username )
     })
   return (
     <div className=" align-element flex justify-center sm:justify-end py-4">

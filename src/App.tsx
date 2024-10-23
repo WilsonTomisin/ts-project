@@ -1,5 +1,6 @@
 import {HomeLayout,Landing,Error,ErrorElement,Products,SingleProduct,Cart,About,Register,Login, Checkout, Orders,} from './pages';
 import { createBrowserRouter, RouterProvider} from 'react-router-dom';
+import { store } from './store';
 
 
 // Loaders
@@ -9,6 +10,9 @@ import { loader as SingleProductLoader } from './pages/SingleProduct';
 
 // Actions
 import { action as RegisterUser } from './pages/Register';
+import { action as LoginUser } from './pages/Login';
+
+
 
 const router = createBrowserRouter([
   {
@@ -28,7 +32,8 @@ const router = createBrowserRouter([
   {
     path:"/login",
     element:<Login/>,
-    errorElement:<Error/>
+    errorElement:<Error/>,
+    action: LoginUser(store)
   },
   {
     path:'/register',
