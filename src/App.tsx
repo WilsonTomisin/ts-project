@@ -7,10 +7,12 @@ import { store } from './store';
 import { loader as LandingLoader } from './pages/Landing';
 import { loader as ProductsLoader} from './pages/Products';
 import { loader as SingleProductLoader } from './pages/SingleProduct';
+import { loader as CheckoutLoader } from './pages/Checkout';
 
 // Actions
 import { action as RegisterUser } from './pages/Register';
 import { action as LoginUser } from './pages/Login';
+import { action as checkOutAction } from './components/CheckOutForm';
 
 
 
@@ -25,7 +27,7 @@ const router = createBrowserRouter([
       { path:"products/:id", element:<SingleProduct/>,errorElement:<ErrorElement/>, loader: SingleProductLoader },
       { path:"cart",element:<Cart/> ,errorElement:<ErrorElement/> },
       { path:"about", element:<About/> ,errorElement:<ErrorElement/> },
-      { path:"checkout", element:<Checkout/> ,errorElement:<ErrorElement/> },
+      { path:"checkout", element:<Checkout/> ,errorElement:<ErrorElement/>, loader: CheckoutLoader(store), action:checkOutAction(store)  }, // see checkout route for more detail on the loader function.
       {path:"orders", element:<Orders/>, errorElement:<ErrorElement/> }
     ]
   },
@@ -33,7 +35,8 @@ const router = createBrowserRouter([
     path:"/login",
     element:<Login/>,
     errorElement:<Error/>,
-    action: LoginUser(store)
+    action: LoginUser(store)   /* we pass the store because we need to access the dispatch function in the action function
+                                beacuse action functions cannot call hooks. */
   },
   {
     path:'/register',

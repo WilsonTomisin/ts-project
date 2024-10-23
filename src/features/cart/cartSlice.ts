@@ -6,10 +6,10 @@ import { toast } from '@/hooks/use-toast';
 const initialCartState:CartState ={
     cartItems: [],
     numItemsInCart: 0,
-    cartTotal: 0,
+    cartTotal: 0, // cost of all products minus shipping and taxes.
     shipping: 200,
     tax:0,
-    orderTotal: 0
+    orderTotal: 0 // cost of all products plus shipping and taxes.
 }
 const getCartStateFromLocalStorage = ():CartState =>{
     const storedData = localStorage.getItem('cart');
