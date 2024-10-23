@@ -31,7 +31,7 @@ const userSLice = createSlice({
 
             if (user.username === 'demo user') {
                 toast({
-                    description:'welcome demo user' 
+                    description:'logged in as Guest' 
                 })
                 return ;
             }

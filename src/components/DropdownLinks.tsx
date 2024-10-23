@@ -8,8 +8,11 @@ import { AlignLeft } from 'lucide-react';
 import { Button } from './ui/button';
 import { links } from '@/utils';
 import { NavLink } from 'react-router-dom';
+import { useAppSelector } from '@/hooks';
 
 function DropdownLinks() {
+  const user = useAppSelector((state)=> state.userState.user);
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className='lg:hidden '>
@@ -23,6 +26,12 @@ function DropdownLinks() {
        sideOffset={25}
        className='lg:hidden w-52'>
             {links.map((link)=>{
+                const restrictedRoutes = link.label === 'checkout' || link.label === 'orders' ;
+
+                // checkout and order routes do not display if not logged in.
+                if (restrictedRoutes && !user) {
+                  return null ;
+                }
                 return <DropdownMenuItem key={link.label}>
                     <NavLink to={link.href} className={(({isActive})=>{
                         return ` capitalize w-full ${ isActive ? ' text-primary': ''}`

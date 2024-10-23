@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 
 
 const Cart = () => {
-  const user = null ;
+  const user = useAppSelector((state)=> state.userState.user) ;
   const numberOfItemsInCart = useAppSelector((state)=> state.cartState.numItemsInCart)
 
   if (numberOfItemsInCart == 0) {

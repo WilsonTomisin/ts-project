@@ -48,7 +48,7 @@ const cartSlice = createSlice({
             const cartItemToDelete = state.cartItems.find(item => item.cartID == cartIdToDelete);
             // ^\ |^ returns the item in the state cart that matches the action.payload(cartIdToDelete)
 
-            if (!cartItemToDelete) return ;
+            if (!cartItemToDelete) return  ;
             state.cartItems = state.cartItems.filter(item => item.cartID !== cartItemToDelete.cartID )
             //^^^^^^ returns a new array of cart items excluding the one that `item.cartID !== cartItemToDelete.cartID` returns false
             state.numItemsInCart = state.numItemsInCart - cartItemToDelete.amount

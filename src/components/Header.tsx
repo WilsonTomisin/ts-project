@@ -1,19 +1,33 @@
-import { useState } from "react"
-import { Button } from "./ui/button"
-import { Link } from "react-router-dom"
-import { useAppSelector } from "@/hooks"
+import { Link, useNavigate } from 'react-router-dom';
+import { Button } from './ui/button';
+import { useAppDispatch, useAppSelector } from '@/hooks';
+
+import { logoutUser } from '../features/user/userSlice';
+import { clearCart } from '../features/cart/cartSlice';
+import { toast } from '@/hooks/use-toast';
 
 const Header = () => {
+
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+    const username = useAppSelector((state)=> state.userState.user?.username)
+
+    const handleLogout =()=>{
+
+        dispatch(logoutUser());
+        dispatch(clearCart())
+        toast({
+            title:'logged out successfully'
+        })
+        navigate('/login')
+    }
     
-    const [user, setUser] = useState<{name:string } | null>({
-        name: useAppSelector((state)=> state.userState.user?.username )
-    })
   return (
     <div className=" align-element flex justify-center sm:justify-end py-4">
         {
-            user ? <div className=" flex items-center gap-x-2 sm:gap-x-8">
-                <span className=" text-xs sm:text-sm">Hello,{user.name}</span>
-                <Button variant={'link'} size={'sm'} onClick={()=> setUser(null)}>
+            username ? <div className=" flex items-center gap-x-2 sm:gap-x-8">
+                <span className=" text-xs sm:text-sm">Hello,{username}</span>
+                <Button variant={'link'} size={'sm'} onClick={()=> handleLogout()}>
                     Logout
                 </Button>
             </div>

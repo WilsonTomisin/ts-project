@@ -13,7 +13,7 @@ import { toast } from '@/hooks/use-toast';
 import { type ReduxStore } from '@/store';
 import { loginUser } from '@/features/user/userSlice';
 import { useAppDispatch } from '@/hooks';
-import { AxiosResponse } from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 
 
 
@@ -31,6 +31,11 @@ export const action = (store:ReduxStore):ActionFunction => {
       store.dispatch(loginUser({username,jwt}));
       return redirect('/')
     } catch (error) {
+      const errorMsg = error instanceof AxiosError ? error.response?.data.error.message : 'login failed'
+      toast({
+        title:'an error occured',
+        description:`error: ${errorMsg}`
+      })
       return null
     }
   }
