@@ -54,11 +54,12 @@ const Error = () => {
             Something unexpected happened.
           </p>
           <div className=" mt-10">
-            <Button asChild variant={'secondary'} size={'lg'}>
+           <h1 className=" text-primary font-light"> reload page.. </h1>
+            {/* <Button asChild variant={'secondary'} size={'lg'}>
               <Link to={'/'}>
                 Go back home.
               </Link>
-            </Button>
+            </Button> */}
           </div>
         </div>
     </div>

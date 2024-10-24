@@ -8,6 +8,7 @@ import { loader as LandingLoader } from './pages/Landing';
 import { loader as ProductsLoader} from './pages/Products';
 import { loader as SingleProductLoader } from './pages/SingleProduct';
 import { loader as CheckoutLoader } from './pages/Checkout';
+import { loader as OrderLoader} from './pages/Orders'
 
 // Actions
 import { action as RegisterUser } from './pages/Register';
@@ -22,13 +23,13 @@ const router = createBrowserRouter([
     element: <HomeLayout/>,
     errorElement:<Error/>,
     children:[
-      {index:true, element:<Landing/>, loader: LandingLoader},
+      { index:true, element:<Landing/>, loader: LandingLoader},
       { path:"products", element:<Products/>,errorElement:<ErrorElement/>, loader: ProductsLoader },
       { path:"products/:id", element:<SingleProduct/>,errorElement:<ErrorElement/>, loader: SingleProductLoader },
       { path:"cart",element:<Cart/> ,errorElement:<ErrorElement/> },
       { path:"about", element:<About/> ,errorElement:<ErrorElement/> },
       { path:"checkout", element:<Checkout/> ,errorElement:<ErrorElement/>, loader: CheckoutLoader(store), action:checkOutAction(store)  }, // see checkout route for more detail on the loader function.
-      {path:"orders", element:<Orders/>, errorElement:<ErrorElement/> }
+      { path:"orders", element:<Orders/>, errorElement:<ErrorElement/> , loader: OrderLoader(store) }
     ]
   },
   {

@@ -2,7 +2,7 @@ import { useAppSelector } from '@/hooks';
 import { CheckOutForm, Sectiontitle, CartItemsTotal } from '@/components';
 import { LoaderFunction, redirect } from 'react-router-dom';
 import { type ReduxStore } from '@/store';
-import { toast, useToast } from '@/hooks/use-toast';
+import { toast} from '@/hooks/use-toast';
 
 
 //  we are accessing the store in the loader function because we want to ensure that there must be user logged in 
@@ -21,13 +21,14 @@ export const loader= (store:ReduxStore):LoaderFunction=>{
       toast({variant:'destructive', description:'login to continue'})
       return redirect('/login')
     }
+    
     return null;
   }
 }
 
 
 const Checkout = () => {
-  const { toast } = useToast()
+  // const { toast } = useToast()
   const CartTotal = useAppSelector((state)=> state.cartState.cartTotal)
 
   if (CartTotal === 0) {

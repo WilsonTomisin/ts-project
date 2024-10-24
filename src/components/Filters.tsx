@@ -11,11 +11,12 @@ const Filters = () => {
   GET HTTP reguest by default and returns the value(s) in the URL as query parameters... */
 
 
-  /* Unlike the traditional form html element that uses a POST HTTP request by default. 
-  until specified in the method attribute whether GET,POST ,PUT OR DELETE !! */
+
 
   const {meta, params} = useLoaderData() as ProductsResponseWithParams
   const { search, category, order,page,price, company, shipping} = params
+  console.log(meta);
+  
   return (
   
     <Form
