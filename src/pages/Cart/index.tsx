@@ -15,10 +15,10 @@ const Cart = () => {
     <>
       <Sectiontitle text='Shopping cart'/>
       <div className=' flex gap-8 mt-8  justify-between flex-col lg:flex-row'>
-        <div className=' w-[70%] '>
+        <div className=' w-full lg:w-[70%] '>
           <CartItemsList/>
         </div>
-        <div className=' w-[30%] lg:pl-4 '>
+        <div className=' w-full lg:w-[30%]  lg:pl-4 '>
           <CartItemsTotal/>
           { user ?
             <Button className=' w-full mt-8' size={'lg'} asChild>
