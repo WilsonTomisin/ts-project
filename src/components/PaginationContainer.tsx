@@ -48,7 +48,7 @@ const PaginationContainer = () => {
         </PaginationLink>
       </PaginationItem>
     )
-    })
+  })
   
     const { nextUrl, prevUrl} = constructPrevOrNextUrl({
       currentPage: page,
@@ -57,7 +57,7 @@ const PaginationContainer = () => {
       pathname
     })
   return (
-    <Pagination>
+    <Pagination className=' mt-10'>
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious to={prevUrl}/>

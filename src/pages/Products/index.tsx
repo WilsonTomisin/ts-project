@@ -13,7 +13,7 @@ export const loader:LoaderFunction = async({request}):Promise<ProductsResponseWi
 
     // the reason we are accessing the URL params and converting them into an object is soo..
     //..that we can populate the form fields with  default values respective to them .
-    // check the filter component to see how we use it.
+    // check the filters component to see how we use it.
     let newResponse ={ ...response.data, params}
     console.log(newResponse); // returns an object { data:[] of objects, meta:{} , params:{}  }
     

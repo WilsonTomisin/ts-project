@@ -37,6 +37,7 @@ export const loader =(store:ReduxStore):LoaderFunction=>{
             Authorization: ` Bearer ${user.jwt}`
           }
         })
+        console.log(params)
         return { ...response.data}
         
       } catch (error) {
