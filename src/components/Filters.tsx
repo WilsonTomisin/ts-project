@@ -14,7 +14,7 @@ const Filters = () => {
 
 
   const {meta, params} = useLoaderData() as ProductsResponseWithParams
-  const { search, category, order,page,price, company, shipping} = params
+  const { search, category, order,price, company, shipping} = params
   // console.log(meta);
   
   return (
